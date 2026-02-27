@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Dashboard QA Ejecutivo - Sistema de Diseño
+ * Paleta corporativa: Navy, Slate, con acentos semánticos para estados
+ * Audiencia: Gerencia de TI y Ciberseguridad
+ */
+
+@layer base {
+  :root {
+    /* Fondos principales */
+    --background: 222 47% 97%;
+    --foreground: 222 47% 11%;
+
+    /* Cards y superficies */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popovers y modales */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primario - Navy corporativo */
+    --primary: 222 47% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secundario - Slate suave */
+    --secondary: 215 25% 92%;
+    --secondary-foreground: 222 47% 20%;
+
+    /* Muted - Tonos neutros */
+    --muted: 215 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Acento - Azul corporativo */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Estados semánticos */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Estados de QA */
+    --status-success: 142 76% 36%;
+    --status-success-foreground: 0 0% 100%;
+    --status-warning: 38 92% 50%;
+    --status-warning-foreground: 0 0% 0%;
+    --status-error: 0 84% 60%;
+    --status-error-foreground: 0 0% 100%;
+    --status-pending: 217 91% 60%;
+    --status-pending-foreground: 0 0% 100%;
+    --status-info: 199 89% 48%;
+    --status-info-foreground: 0 0% 100%;
+
+    /* Bordes e inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 20%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 18%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 47% 18%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Sombras elegantes */
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(222 47% 11% / 0.1), 0 8px 10px -6px hsl(222 47% 11% / 0.1);
+
+    /* Gradientes corporativos */
+    --gradient-primary: linear-gradient(135deg, hsl(222 47% 20%), hsl(222 47% 30%));
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 50%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 27% 84%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 47% 12%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Tipografía ejecutiva */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Card ejecutiva con sombra elegante */
+  .card-executive {
+    @apply bg-card rounded-xl border border-border/50 shadow-sm transition-all duration-200;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-executive:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* KPI Card */
+  .kpi-card {
+    @apply bg-card rounded-xl border border-border/50 p-6 transition-all duration-200;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium;
+  }
+
+  .status-badge-success {
+    @apply status-badge bg-status-success/15 text-status-success;
+  }
+
+  .status-badge-warning {
+    @apply status-badge bg-status-warning/15 text-status-warning;
+  }
+
+  .status-badge-error {
+    @apply status-badge bg-status-error/15 text-status-error;
+  }
+
+  .status-badge-pending {
+    @apply status-badge bg-status-pending/15 text-status-pending;
+  }
+
+  .status-badge-info {
+    @apply status-badge bg-status-info/15 text-status-info;
+  }
+
+  /* Tab navigation */
+  .tab-nav {
+    @apply flex gap-1 p-1 bg-secondary/50 rounded-lg;
+  }
+
+  .tab-item {
+    @apply px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-200 text-muted-foreground;
+  }
+
+  .tab-item:hover {
+    @apply text-foreground bg-background/50;
+  }
+
+  .tab-item-active {
+    @apply tab-item bg-background text-foreground shadow-sm;
+  }
+
+  /* Table styles */
+  .table-executive {
+    @apply w-full text-sm;
+  }
+
+  .table-executive thead {
+    @apply bg-secondary/50;
+  }
+
+  .table-executive th {
+    @apply px-4 py-3 text-left font-semibold text-muted-foreground uppercase tracking-wider text-xs;
+  }
+
+  .table-executive td {
+    @apply px-4 py-3.5 border-b border-border/50;
+  }
+
+  .table-executive tbody tr {
+    @apply transition-colors duration-150;
+  }
+
+  .table-executive tbody tr:hover {
+    @apply bg-secondary/30;
+  }
+
+  /* Section headers */
+  .section-header {
+    @apply text-lg font-semibold text-foreground mb-4;
+  }
+
+  /* Sin relleno gris al pasar el mouse en el gráfico de casos de prueba */
+  .test-cases-summary-chart .recharts-tooltip-cursor,
+  .test-cases-summary-chart .recharts-active-shape {
+    display: none !important;
+  }
+
+  /* Collapsible section */
+  .collapsible-header {
+    @apply flex items-center justify-between p-4 bg-secondary/30 rounded-lg cursor-pointer transition-all duration-200;
+  }
+
+  .collapsible-header:hover {
+    @apply bg-secondary/50;
+  }
+
+  /* Evidence node */
+  .evidence-node {
+    @apply border-l-4 pl-4 py-3 mb-3 bg-secondary/20 rounded-r-lg;
+  }
+
+  .evidence-node-success {
+    @apply evidence-node border-l-status-success;
+  }
+
+  .evidence-node-warning {
+    @apply evidence-node border-l-status-warning;
+  }
+
+  .evidence-node-error {
+    @apply evidence-node border-l-status-error;
+  }
+
+  /* Priority badges */
+  .priority-critical {
+    @apply px-2 py-1 bg-status-error/15 text-status-error rounded text-xs font-semibold uppercase;
+  }
+
+  .priority-high {
+    @apply px-2 py-1 bg-status-warning/15 text-status-warning rounded text-xs font-semibold uppercase;
+  }
+
+  .priority-medium {
+    @apply px-2 py-1 bg-status-pending/15 text-status-pending rounded text-xs font-semibold uppercase;
+  }
+
+  .priority-low {
+    @apply px-2 py-1 bg-muted text-muted-foreground rounded text-xs font-semibold uppercase;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .card-executive,
+    .kpi-card {
+      box-shadow: none !important;
+      border: 1px solid hsl(var(--border)) !important;
+    }
+
+    body {
+      background: white !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
